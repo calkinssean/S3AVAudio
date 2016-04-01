@@ -1,0 +1,19 @@
+PODS:
+  - Alamofire (3.3.0)
+  - AmazonS3RequestManager (0.12.0):
+    - Alamofire (~> 3.0)
+    - SWXMLHash (~> 2.0)
+  - Firebase (2.5.1)
+  - SWXMLHash (2.2.0)
+
+DEPENDENCIES:
+  - AmazonS3RequestManager
+  - Firebase
+
+SPEC CHECKSUMS:
+  Alamofire: 9054db4a1b1ca9e363223183e01cea380159a27c
+  AmazonS3RequestManager: a88f4596165b46961a6bf904f357ba2aab4931b6
+  Firebase: 3565ea88b830f28f2c77ecc524622bc71a20d085
+  SWXMLHash: cf2a62b04514211b238b39b3aa348ba4746523af
+
+COCOAPODS: 0.39.0

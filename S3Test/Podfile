@@ -1,0 +1,4 @@
+use_frameworks!
+
+pod ‘AmazonS3RequestManager’
+pod 'Firebase'
