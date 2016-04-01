@@ -39,14 +39,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         self.observeAudioFiles()
         
-        let f = AudioFile()
-        
-        f.title = "hello"
-        
-        f.save()
-        
-        self.amazonS3Manager.putObject(self.getDocumentsDirectory(), destinationPath: f.title)
-        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,22 +61,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         //grab audio file from array and creates a new instance of it's filepath
         let f = arrayOfAudioFiles[indexPath.row]
-        let filePath = f.filePath
-        print(f.title)
-        print(f.filePath)
+        self.currentAudioFile = arrayOfAudioFiles[indexPath.row]
         
-        do {
-            
-            //tries to play audiofile with AVAudioPlayer
-            audioPlayer = try AVAudioPlayer(contentsOfURL: filePath)
-            audioPlayer?.delegate = self
-            audioPlayer?.play()
-            
-        } catch {
-            
-            print(error)
-            
-        }
+        self.playAudio(f.filePath)
         
         print(f.filePath)
         
@@ -119,9 +98,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         let file = AudioFile(key: key, dict: dict)
                         
                         print(file.title)
+                        print(file.filePath)
                         
                         self.arrayOfAudioFiles.insert(file, atIndex: 0)
                         print(self.arrayOfAudioFiles.count)
+                        self.tableView.reloadData()
                         
                     }
                 }
@@ -135,25 +116,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         startNewAudioFile()
         self.tableView.reloadData()
         
-    }
-    
-    //MARK: - Play Button
-    @IBAction func playTapped(sender: UIButton) {
-        
-        //Grabs the file path of current audiofile (NSURL)
-        let filePath = self.currentAudioFile.filePath
-        
-        do {
-            
-            //Plays that audio file from filepath using AVAudioPlayer
-            audioPlayer = try AVAudioPlayer(contentsOfURL: filePath)
-            audioPlayer?.delegate = self
-            audioPlayer?.play()
-            
-        } catch {
-            print(error)
-        }
-
     }
     
     //MARK: - Pause Button
@@ -190,15 +152,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         self.currentAudioFile.title = "\(timestamp)"
         
+        self.currentAudioFile.filePath = self.getDocumentsDirectory()
+        
         self.arrayOfAudioFiles.append(self.currentAudioFile)
+        
+        self.currentAudioFile.save()
         
         amazonS3Manager.putObject(self.getDocumentsDirectory(), destinationPath: self.currentAudioFile.title)
         
-        let url = self.currentAudioFile.filePath
+        let filePath = self.createFilePath(self.currentAudioFile.filePath, title: self.currentAudioFile.title)
+        print(filePath)
         
         //Starts new audio session with new audiofile url
-        startSessionWithFilePath(url)
-     
+        startSessionWithFilePath(filePath)
+        
     }
     
     //MARK: - Start audio session
@@ -227,6 +194,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             print(error)
         }
         
+    }
+    
+    func createFilePath(filePath: NSURL, title: String) -> NSURL {
+        return filePath.URLByAppendingPathComponent(title)
+    }
+    
+    func playAudio(filePath: NSURL) {
+        
+        print(filePath)
+        
+        do {
+            
+            //Plays that audio file from filepath using AVAudioPlayer
+            audioPlayer = try AVAudioPlayer(contentsOfURL: filePath)
+            audioPlayer?.delegate = self
+            audioPlayer?.play()
+            
+        } catch {
+            print(error)
+        }
     }
     
 }

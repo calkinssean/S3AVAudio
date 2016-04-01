@@ -12,10 +12,10 @@ import AmazonS3RequestManager
 
 class AudioFile {
     
-    let amazonS3Manager = AmazonS3RequestManager(bucket: "tiycourse-contentdelivery-mobilehub-1603932612",
+    let amazonS3Manager = AmazonS3RequestManager(bucket: "https://console.aws.amazon.com/s3/home?region=us-west-2&bucket=tiycourse&prefix=WatchOSAudio/",
                                                  region: .USStandard,
-                                                 accessKey: "AKIAIQWXUAGVEWNQI77Q",
-                                                 secret: "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")
+                                                 accessKey: "AKIAJJRDLLRE5UHRFDJQ",
+                                                 secret: "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")
     
     let firebaseRef = Firebase(url: "https://watchosapp.firebaseio.com/audiofiles")
     var ref: Firebase?

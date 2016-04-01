@@ -20,29 +20,22 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="EX6-lA-6PX">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1oV-f2-4kb">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="44"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1oV-f2-4kb">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="44"/>
                                         <state key="normal" image="record"/>
                                         <connections>
                                             <action selector="recordTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gdd-48-S8U"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xsc-Og-Ji4">
-                                        <rect key="frame" x="150" y="0.0" width="150" height="44"/>
-                                        <state key="normal" image="play"/>
-                                        <connections>
-                                            <action selector="playTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kbc-d1-Tmc"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cj-uD-Ysc">
-                                        <rect key="frame" x="300" y="0.0" width="150" height="44"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cj-uD-Ysc">
+                                        <rect key="frame" x="200" y="0.0" width="200" height="44"/>
                                         <state key="normal" image="pause"/>
                                         <connections>
                                             <action selector="pauseTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SFt-Jy-Fhn"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OCJ-3t-34A">
-                                        <rect key="frame" x="450" y="0.0" width="150" height="44"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OCJ-3t-34A">
+                                        <rect key="frame" x="400" y="0.0" width="200" height="44"/>
                                         <state key="normal" image="stop"/>
                                         <connections>
                                             <action selector="stopTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sXG-nu-fbM"/>
@@ -93,7 +86,6 @@
     </scenes>
     <resources>
         <image name="pause" width="32" height="32"/>
-        <image name="play" width="32" height="32"/>
         <image name="record" width="22" height="32"/>
         <image name="stop" width="32" height="32"/>
     </resources>
